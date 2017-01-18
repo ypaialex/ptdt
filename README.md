@@ -28,7 +28,7 @@ These may be accessed XXX
 
   1. Polygenic Risk Score file (from here: `PRS file`)
     * Contents: Mapping between individuals and their polygenic risk scores
-    * Format: Text file with four columns: 1) Family ID 2) Individual ID 3) Case/control status 4) polygenic risk score. 
+    * Format: Text file with four columns: 1) Family ID 2) Individual ID 3) Case/control status (typically 2 if case, 1 if not) 4) polygenic risk score. 
     * Number of rows in `PRS file` = number of individuals in cohort
   2. Family Structure file (from here: `Structure file`)
     * Contents: File identifying which individual belongs in which family
@@ -54,7 +54,7 @@ python ptdt.py
 If successfully run, the following output will print:
 
 ```
-usage: ptdt.py [-h] [--prs FILENAME X Y [FILENAME X Y ...]] --structure
+usage: ptdt.py [-h] --prs FILENAME X Y --structure
                      FILENAME [--subset FILENAME] [--quad] [--print]
                      --out OUT
 ptdt.py: error: the following arguments are required: --structure, --out
@@ -120,9 +120,57 @@ python ptdt.py --help
 ## 4) Tutorial
 
 You can download the three files for the tutorial [here] (some extension). Those files are:
-* `PRS file` called *demo_prs_file* which contains individual-PRS mapping for 7,780 individuals (1,945 families X 4 members per family)
-* `Structure file` called *demo_structure_file* which contains mapping between family ID and individual ID for 1,945 families
-* `Subset file` called *demo_subset_file* which contains a subset of 1,410 families from the *demo_structure_file*
+
+1) `PRS file` called *demo_prs_file* which contains individual-PRS mapping for 7,780 individuals (1,945 families X 4 members per family)
+
+Printed below are the first ten lines of *demo_prs_file* 
+
+```
+demo_FID demo_IID    PHENO PRS
+fam2769  proband2769 2     1229.826212
+fam2769  father2769  1     1208.718874
+fam2769  sibling2769 1     1034.42246
+fam2769  mother2769  1     822.2613297
+fam2727  proband2727 2     1002.834464
+fam2727  mother2727  1     767.7577174
+fam2727  father2727  1     739.9089486
+fam2727  sibling2727 1     704.5860444
+fam2682  mother2682  1     1031.568723
+```
+
+2) `Structure file` called *demo_structure_file* which contains mapping between family ID and individual ID for 1,945 families
+
+Printed below are the first ten lines of *demo_structure_file* 
+
+```
+familyID_demo probandID_demo fatherID_demo motherID_demo siblingID_demo
+fam1000       proband1000    father1000    mother1000    sibling1000
+fam1001       proband1001    father1001    mother1001    sibling1001
+fam1002       proband1002    father1002    mother1002    sibling1002
+fam1003       proband1003    father1003    mother1003    sibling1003
+fam1004       proband1004    father1004    mother1004    sibling1004
+fam1005       proband1005    father1005    mother1005    sibling1005
+fam1006       proband1006    father1006    mother1006    sibling1006
+fam1007       proband1007    father1007    mother1007    sibling1007
+fam1008       proband1008    father1008    mother1008    sibling1008
+```
+
+3) `Subset file` called *demo_subset_file* which contains a subset of 1,410 families from the *demo_structure_file*
+
+Printed below are the first ten lines of *demo_subset_file*
+
+```
+fam1025
+fam1026
+fam1027
+fam1028
+fam1029
+fam1030
+fam1031
+fam1032
+fam1033
+fam1034
+```
 
 **Basic pTDT on proband and unaffected sibling**
 
