@@ -12,6 +12,9 @@ This `pTDT` wiki describes:
 4. A brief `pTDT` tutorial
 
 ## System requirements and `pTDT` download
+
+The following are required to run `pTDT`:
+
 1. `Python 3.x`
 2. `argparse`
 4. `numpy`
@@ -24,7 +27,7 @@ These may be accessed XXX
 
 ## 1) Basic file formats
 
-`pTDT` requires two files to run:
+`pTDT` requires two input files:
 
   1. Polygenic Risk Score file (from here: `PRS file`)
     * Contents: Mapping between individuals and their polygenic risk scores
@@ -74,7 +77,7 @@ Options invoked:
 
 n families loaded from structure file.
 Creating pTDT matrix... done.
-QC pass.
+QC pass/fail.
 m probands used in pTDT analysis (n-m skipped due to missingness).
 
 ------------------------------------------
@@ -87,7 +90,7 @@ pTDT pvalue: Z
 --output: Results written to [outname].ptdt.result.
 ```
 Brief description of basic output
-* `QC pass` If correlation between average parent PRS and offspring PRS > 0.2 (flags data scramble)
+* `QC pass/fail` QC pass if correlation between average parent PRS and offspring PRS > 0.2 (flags data scramble)
 * `pTDT mean` Average of the pTDT deviation distribution
 * `pTDT SE` Standard error of the pTDT deviation distribution
 * `pTDT pvalue` pvalue of one-sample t-test of the pTDT deviation distribution against null of pTDT mean = 0
@@ -95,15 +98,15 @@ Brief description of basic output
 
 ## 3) Additional flags
 
-The following are flags that can be added to the `pTDT` basic usage. All available flags are also available with the `-help` flag as follows:
+The following are flags that can be added to the `pTDT` basic usage. All available flags can be viewed using `-help` flag as follows:
 
 ```
 python ptdt.py --help
 ```
 
 `--subset [subset file]` 
-* Contents: Allows `pTDT` to be performed on a subset of the families in the `Structure file`
-* Format: `subset file` is a text file containing one column of Family IDs (no header)
+* Contents: Allows `pTDT` to be performed on a subset of the families in the `Structure file`. Note that families in the subset file are those retained for analysis.
+* Format: `subset file` is a text file containing one column of Family IDs (no header). 
 
 `--quad`
 * Contents: If Sibling column present in `Structure file`, invoking `--quad` performs pTDT `pTDT` analysis on these siblings as well
