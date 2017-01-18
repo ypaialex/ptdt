@@ -63,7 +63,6 @@ ptdt.py: error: the following arguments are required: --structure, --out
 A basic `pTDT` analysis must include 1) `PRS file` 2) `Structure file` 3) out name, as follows:
 ```
 python ptdt.py --prs [PRS file] --structure [Structure file] --out [outname]
-
 ```
 If successfully run, the following output will print:
 
@@ -114,7 +113,7 @@ python ptdt.py --help
 * Contents: Outputs a table to working directory that contains intermediate values in the `pTDT` calculation. The table resembles a `Structure file` where the individual IDs have been replaced by their corresponding PRS from the `PRS file` and the pTDT values calculated in the far right columns
 * Format: Text file with 6 columns: 1) Family ID 2) proband PRS 3) father PRS 4) mother PRS 5) average parent PRS 6) proband pTDT value. If `--quad` invoked, additional sibling PRS and sibling PRS columns added.  
 
-`--prs` X Y 
+`--prs X Y` 
 * Contents: The default `PRS file` format is set to match the output from [PRS scoring in Plink] (http://pngu.mgh.harvard.edu/~purcell/plink/profile.shtml), with the Individual ID in the 2nd column and the PRS in the 4th column. This modification to the `--prs` flag allows `pTDT` to accept files with different column ordering
 * Format: `--prs X Y` where X is the integer number of the column containing the Individual ID and Y is the integer number of the column containing the PRS value. Default is X = 2 and Y = 4.
 
