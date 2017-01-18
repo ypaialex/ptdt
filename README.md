@@ -2,9 +2,14 @@
 
 `pTDT` is a python-based command line tool for conducting significance tests on the over-transmission of polygenic risk from parents to offspring.
 
-In this `pTDT` wiki, we describe 1) the basic file formats accepted by `pTDT` 2) basic usage of `pTDT` 3) additional analytic flags available through `pTDT` and 4) a brief `pTDT` tutorial. 
+This `pTDT` wiki describes: 
 
-For a detailed description of the `pTDT`, please consult [Weiner et al. 2017] (http://biorxiv.org/content/early/2016/11/23/089342). If you publish using this pipeline, please cite that paper.
+1. The file formats accepted by `pTDT` 
+2. The basic usage of `pTDT` 
+3. Additional analytic flags available through `pTDT`  
+4. A brief `pTDT` tutorial
+
+For a detailed description of the `pTDT`, please consult [Weiner et al. 2017] (http://biorxiv.org/content/early/2016/11/23/089342). If you publish using `pTDT`, please cite that paper.
 
 ## System requirements and `pTDT` download
 1. `Python 3.x`
@@ -24,9 +29,17 @@ These may be accessed XXX
   1. Polygenic Risk Score file (from here: `PRS file`)
     * Contents: Mapping between individuals and their polygenic risk scores
     * Format: Text file with four columns: 1) Family ID 2) Individual ID 3) Case/control status 4) polygenic risk score. 
+    * Number of rows in `PRS file` = number of individuals in cohort
   2. Family Structure file (from here: `Structure file`)
     * Contents: File identifying which individual belongs in which family
     * Format: Text file with four or five columns: 1) Family ID 2) Proband Individual ID 3) Father Individual ID 4) Mother Individual ID   5) Sibling IID (*optional*)
+    * Number of rows in `Structure file` = number of families in cohort ~ (length of `PRS file` / n) (n = 3 for trio families, n = 4 for quads)
+
+Individuals missing from the `Structure file` should be marked as "NA"
+
+**Important note about unique IDs**
+
+Individuals must be assigned unique IDs. It is this unique ID that allows `ptdt` to map individuals from their "Individual ID" in the `PRS file` to their appropriate "Individual ID" in the `Structure file`.
 
 ## 2) Basic usage 
 
@@ -72,7 +85,7 @@ pTDT SE: Y
 pTDT pvalue: Z
 ------------------------------------------
 
---output: Results written to jan18.ptdt.result.
+--output: Results written to [outname].ptdt.result.
 ```
 Brief description of basic output
 * `QC pass` If correlation between average parent PRS and offspring PRS > 0.2 (flags data scramble)
@@ -101,7 +114,7 @@ python ptdt.py --help
 * Contents: Outputs a table to working directory that contains intermediate values in the `pTDT` calculation. The table resembles a `Structure file` where the individual IDs have been replaced by their corresponding PRS from the `PRS file` and the pTDT values calculated in the far right columns
 * Format: Text file with 6 columns: 1) Family ID 2) proband PRS 3) father PRS 4) mother PRS 5) average parent PRS 6) proband pTDT value. If `--quad` invoked, additional sibling PRS and sibling PRS columns added.  
 
-Modification to `--prs` to accomodate different file structures
+`--prs` X Y 
 * Contents: The default `PRS file` format is set to match the output from [PRS scoring in Plink] (http://pngu.mgh.harvard.edu/~purcell/plink/profile.shtml), with the Individual ID in the 2nd column and the PRS in the 4th column. This modification to the `--prs` flag allows `pTDT` to accept files with different column ordering
 * Format: `--prs X Y` where X is the integer number of the column containing the Individual ID and Y is the integer number of the column containing the PRS value. Default is X = 2 and Y = 4.
 
