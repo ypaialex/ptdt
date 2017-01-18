@@ -1,6 +1,8 @@
 #pTDT (Polygenic Transmission Disequilibrium Test) `v1.0.0`
 
-`pTDT` is a python-based command line tool for conducting significance tests on the over-transmission of polygenic risk from parents to offspring.
+`pTDT` is a python-based command line tool for analyzing the transmission of polygenic risk within families.
+
+For a detailed description of the `pTDT`, please consult [Weiner et al. 2017] (http://biorxiv.org/content/early/2016/11/23/089342). If you publish using `pTDT`, please cite that paper.
 
 This `pTDT` wiki describes: 
 
@@ -8,8 +10,6 @@ This `pTDT` wiki describes:
 2. The basic usage of `pTDT` 
 3. Additional analytic flags available through `pTDT`  
 4. A brief `pTDT` tutorial
-
-For a detailed description of the `pTDT`, please consult [Weiner et al. 2017] (http://biorxiv.org/content/early/2016/11/23/089342). If you publish using `pTDT`, please cite that paper.
 
 ## System requirements and `pTDT` download
 1. `Python 3.x`
