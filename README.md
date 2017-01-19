@@ -25,15 +25,15 @@ We recommend you download Python and the required packages under the [Anaconda] 
 
 `pTDT` may be downloaded using the command-line.
 
-'''
+```
 git clone https://github.com/ypaialex/ptdt
-'''
+```
 
 Alternatively, you can [download the source code (ZIP)] (https://github.com/ypaialex/ptdt/zipball/master). Install `pTDT` by entering the source folder and typing
 
-'''
+```
 pip install .
-'''
+```
 
 ## 1) Basic file formats
 
@@ -265,9 +265,9 @@ The commands invoked and the results are written to `demo_prs_subset.ptdt.log`an
 
 Download of newest version of `pTDT` available by entering
 
-'''
+```
 git pull origin master
-'''
+```
  
 
 ## Authors
