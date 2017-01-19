@@ -1,7 +1,7 @@
 '''
 (c) 2017 Alex Pai, Daniel Weiner, and Elise Robinson
 
-ptdt is a command line tool tool for analyzing the 
+pTDT is a command line tool tool for analyzing the 
 transmission of polygenic risk within families.
 
 
