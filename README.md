@@ -194,7 +194,7 @@ python ptdt.py --prs demo_prs_upload --structure demo_structure_upload --quad --
 The following output will print:
 
 ```
-pTDT Script v1.0.3 (10 Jan 2017)
+pTDT Script vX.X.X (DD MM YYYY)
 Created by Alex Pai, Daniel Weiner and Elise Robinson
 
 Writing log file to demo_prs_quad.ptdt.log
@@ -235,7 +235,7 @@ python ptdt.py --prs demo_prs_upload --structure demo_structure_upload --subset 
 The following output will print:
 
 ```
-pTDT Script v1.0.3 (10 Jan 2017)
+pTDT Script vX.X.X (DD MM YYYY)
 Created by Alex Pai, Daniel Weiner and Elise Robinson
 
 Writing log file to demo_prs_subset.ptdt.log
