@@ -268,7 +268,10 @@ Download of newest version of `pTDT` available by entering
 ```
 git pull origin master
 ```
- 
+
+## License
+
+This project is licensed under GNU GPL v3. 
 
 ## Authors
 
