@@ -10,3 +10,6 @@ __pycache__/
 
 # Python egg metadata
 /*.egg-info
+
+# mac
+*.DS_Store

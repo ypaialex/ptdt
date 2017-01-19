@@ -18,12 +18,22 @@ The following are required to run `pTDT`:
 1. `Python 3.x`
 2. `argparse`
 4. `numpy`
-5. `pandas`
+5. `pandas (version >= 0.17.0)`
 6. `scipy`
 
-These may be accessed XXX
+We recommend you download Python and the required packages under the [Anaconda] (https://www.continuum.io/downloads) distribution. 
 
-`pTDT` may be downloaded using XXX
+`pTDT` may be downloaded using the command-line.
+
+'''
+git clone https://github.com/ypaialex/ptdt
+'''
+
+Alternatively, you can [download the source code (ZIP)] (https://github.com/ypaialex/ptdt/zipball/master). Install `pTDT` by entering the source folder and typing
+
+'''
+pip install .
+'''
 
 ## 1) Basic file formats
 
@@ -253,7 +263,12 @@ The commands invoked and the results are written to `demo_prs_subset.ptdt.log`an
 
 ## Updating pTDT
 
-Download of newest version of `pTDT` available through `git` XXXXXX
+Download of newest version of `pTDT` available by entering
+
+'''
+git pull origin master
+'''
+ 
 
 ## Authors
 
