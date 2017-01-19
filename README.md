@@ -6,10 +6,10 @@ For a detailed description of the `pTDT`, please consult [Weiner et al. 2017] (h
 
 This `pTDT` wiki describes: 
 
-*[1. The file formats accepted by `pTDT`] (https://github.com/ypaialex/ptdt#1-basic-file-formats) 
-*[2. The basic usage of `pTDT`] (https://github.com/ypaialex/ptdt#2-basic-usage) 
-*[3. Additional analytic flags available through `pTDT`] (https://github.com/ypaialex/ptdt#3-additional-flags)  
-*[4. A brief `pTDT` tutorial] (https://github.com/ypaialex/ptdt#4-tutorial)
+* [1. The file formats accepted by `pTDT`] (https://github.com/ypaialex/ptdt#1-basic-file-formats) 
+* [2. The basic usage of `pTDT`] (https://github.com/ypaialex/ptdt#2-basic-usage) 
+* [3. Additional analytic flags available through `pTDT`] (https://github.com/ypaialex/ptdt#3-additional-flags)  
+* [4. A brief `pTDT` tutorial] (https://github.com/ypaialex/ptdt#4-tutorial)
 
 ## System requirements and `pTDT` download
 
