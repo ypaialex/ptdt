@@ -130,7 +130,8 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
         print('QC pass.')
         log.write('QC pass.\n')
     else:
-        raise ValueError('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS')
+        print('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.')
+	log.write('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.\n')
     
     # t-test
     x = output['pro_pTDT']
@@ -169,7 +170,7 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
         else:
             cols = ['FID','pro_PRS','dad_PRS','mom_PRS','mp_PRS','pro_pTDT']
         output = output[cols]
-        output = output.round(3)
+        output = output.round(4)
         headers = list(output.columns.values)
         outfile = open(outname+'.ptdt.table','w+')
         outfile.flush()
