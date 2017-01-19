@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# ptdt
+*.result
+*.table
+*.log
+*.missing
+
+# Python egg metadata
+/*.egg-info
