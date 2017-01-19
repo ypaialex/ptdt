@@ -263,7 +263,7 @@ The commands invoked and the results are written to `demo_prs_subset.ptdt.log`an
 
 ## Updating pTDT
 
-Download of newest version of `pTDT` available by entering
+Download the newest available version of `pTDT` by entering
 
 ```
 git pull origin master
