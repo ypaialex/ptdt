@@ -132,7 +132,7 @@ python ptdt.py --help
 
 ## 4) Tutorial
 
-The three files should be found in the /demo folder of the cloned repository. You can also individually download the three files for the tutorial [here] (https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/ypaialex/ptdt/tree/master/demo). Those files are:
+The three files should be found in the /demo folder of the cloned repository. You can also individually download the three files for the tutorial [here] (https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/ypaialex/ptdt/tree/master/pTDT_demo). Those files are:
 
 1) `PRS file` called *demo_prs_file* which contains individual-PRS mapping for 7,780 individuals (1,945 families X 4 members per family)
 
