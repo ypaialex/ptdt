@@ -54,6 +54,10 @@ Individuals missing from the `Structure file` should be marked as "NA"
 
 Individuals must be assigned unique IDs. It is this unique ID that allows `ptdt` to map individuals from their "Individual ID" in the `PRS file` to their appropriate "Individual ID" in the `Structure file`.
 
+**Important note about multiplex families**
+
+`Ptdt` is compatible with multiplex families. For each additional proband beyond simplex, create an additional row in the `Structure file`, with each row containing Father IID, Mother IID, and Proband IID. For example, a family with three probands would have three rows in the `Structure file`.
+
 ## 2) Basic usage 
 
 All `pTDT` commands must begin by calling 1) Python and 2) `pTDT` as follows:
@@ -189,13 +193,13 @@ fam1034
 
 The following flags would be used:
 ```
-python ptdt.py --prs demo_prs_upload --structure demo_structure_upload --quad --out demo_prs_quad
+python ptdt.py --prs demo_prs_file --structure demo_structure_file --quad --out demo_prs_quad
 ```
 The following output will print:
 
 ```
 pTDT Script vX.X.X (DD MM YYYY)
-Created by Alex Pai, Daniel Weiner and Elise Robinson
+Created by Alex Pai and Daniel Weiner
 
 Writing log file to demo_prs_quad.ptdt.log
 Options invoked:
@@ -229,14 +233,14 @@ The commands invoked and the results are written to `demo_prs_quad.ptdt.log`and 
 
 The following flags would be used:
 ```
-python ptdt.py --prs demo_prs_upload --structure demo_structure_upload --subset demo_subset_file --out demo_prs_subset
+python ptdt.py --prs demo_prs_file --structure demo_structure_file --subset demo_subset_file --out demo_prs_subset
 
 ```
 The following output will print:
 
 ```
 pTDT Script vX.X.X (DD MM YYYY)
-Created by Alex Pai, Daniel Weiner and Elise Robinson
+Created by Alex Pai and Daniel Weiner
 
 Writing log file to demo_prs_subset.ptdt.log
 Options invoked:
@@ -275,4 +279,4 @@ This project is licensed under GNU GPL v3.
 
 ## Authors
 
-Alex Pai, Daniel Weiner and Elise Robinson (Stanley Center for Psychiatric Research at Broad Institute)
+Alex Pai and Daniel Weiner (Stanley Center for Psychiatric Research at Broad Institute)
