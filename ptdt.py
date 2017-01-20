@@ -1,5 +1,5 @@
 '''
-(c) 2017 Alex Pai, Daniel Weiner, and Elise Robinson
+(c) 2017 Alex Pai and Daniel Weiner
 
 pTDT is a command line tool tool for analyzing the 
 transmission of polygenic risk within families.
@@ -130,8 +130,8 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
         print('QC pass.')
         log.write('QC pass.\n')
     else:
-        print('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.')
-        log.write('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.\n')
+        print('WARNING: QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.')
+        log.write('WARNINGL: QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.\n')
     
     # t-test
     x = output['pro_pTDT']
@@ -180,8 +180,8 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
 
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,description='''
-pTDT Script v1.0.0 (18 Jan 2017)
-(c) 2017 Alex Pai, Daniel Weiner, and Elise Robinson
+pTDT Script v1.0.0 (20 Jan 2017)
+(c) 2017 Alex Pai and Daniel Weiner
 Runs pTDT analysis for a specified family structure''')
 parser.add_argument('--prs', nargs ='+', help='PRS score file [FID] [IID] [PHENO] [PRS], X = [IID] column number, Y = [PRS] column number, default X Y = 2 4',
                     metavar='FILENAME X Y',action=required_length(1,3))
@@ -198,8 +198,8 @@ args = parser.parse_args()
 if __name__ == "__main__":
     PRS, PRS_iid, PRS_prs, structure, subset, quad, table, outname = parse(args)
 
-    print('pTDT Script v1.0.0 (18 Jan 2017)')
-    print('(c) 2017 Alex Pai, Daniel Weiner and Elise Robinson')
+    print('pTDT Script v1.0.0 (20 Jan 2017)')
+    print('(c) 2017 Alex Pai and Daniel Weiner')
     print('')
     print('Writing log file to '+outname+'.ptdt.log')
     print('Options invoked:')
@@ -215,7 +215,7 @@ if __name__ == "__main__":
 
     #log file
     log = open(outname+'.ptdt.log', 'w')
-    log.write('pTDT Script v1.0.0 (18 Jan 2017)\n')
+    log.write('pTDT Script v1.0.0 (20 Jan 2017)\n')
     log.write('Options invoked:\n')
     log.write('\t--PRS {0}\n' .format(PRS.name))
     log.write('\t--structure {0}\n' .format(structure.name))
