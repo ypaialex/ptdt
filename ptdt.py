@@ -131,7 +131,7 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
         log.write('QC pass.\n')
     else:
         print('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.')
-	log.write('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.\n')
+        log.write('QC fail - Low correlation between mid-parent PRS and proband/sibling PRS.\n')
     
     # t-test
     x = output['pro_pTDT']
