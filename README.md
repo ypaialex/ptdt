@@ -45,22 +45,22 @@ pip install .
     * Number of rows in `PRS file` = number of individuals in cohort
   2. Family Structure file (from here: `Structure file`)
     * Contents: File identifying which individual belongs in which family
-    * Format: Text file with four or five columns: 1) Family ID 2) Proband Individual ID 3) Father Individual ID 4) Mother Individual ID   5) Sibling IID (*optional*)
+    * Format: Text file with four or five columns: 1) Family ID 2) Proband Individual ID 3) Father Individual ID 4) Mother Individual ID   5) Sibling Individual ID (*optional*)
     * Number of rows in `Structure file` = number of families in cohort ~ (length of `PRS file` / n) (n = 3 for trio families, n = 4 for quads)
 
 Individuals missing from the `Structure file` should be marked as "NA"
 
 **Important note about unique IDs**
 
-Individuals must be assigned unique IDs. It is this unique ID that allows `ptdt` to map individuals from their "Individual ID" in the `PRS file` to their appropriate "Individual ID" in the `Structure file`.
+Each individual in a given cohort must be assigned a unique Individual ID. It is this unique Individual ID that allows `ptdt` to map individuals from their "Individual ID" in the `PRS file` to their appropriate "Individual ID" in the `Structure file`.
 
 **Important note about multiplex families**
 
-`Ptdt` is compatible with multiplex families. For each additional proband beyond simplex, create an additional row in the `Structure file`, with each row containing Father IID, Mother IID, and Proband IID. For example, a family with three probands would have three rows in the `Structure file`.
+`pTDT` is compatible with multiplex families. For each additional proband beyond simplex, create an additional row in the `Structure file`, with each row containing (in this order) Family ID, Father Individual ID, Mother Individual ID, and Proband Individual ID. For example, a family with three probands would have three rows in the `Structure file`.
 
 ## 2) Basic usage 
 
-All `pTDT` commands must begin by calling 1) Python and 2) `pTDT` as follows:
+All `pTDT` commands must begin by calling 1) python and 2) `pTDT` as follows:
 
 ```
 python ptdt.py
@@ -71,9 +71,8 @@ python ptdt.py
 If successfully run, the following output will print:
 
 ```
-usage: ptdt.py [-h] --prs FILENAME X Y --structure
-                     FILENAME [--subset FILENAME] [--quad] [--print]
-                     --out OUT
+usage: ptdt.py [-h] [--prs FILENAME X Y [FILENAME X Y ...]] --structure
+               FILENAME [--subset FILENAME] [--quad] [--print] --out OUT
 ptdt.py: error: the following arguments are required: --structure, --out
 ```
 
@@ -88,6 +87,7 @@ Writing log file to [outname].ptdt.log
 Options invoked:
 	--PRS [PRS file]
 	--structure [Structure file]
+	--out [outname]
 
 n families loaded from structure file.
 Creating pTDT matrix... done.
@@ -97,7 +97,7 @@ m probands used in pTDT analysis (n-m skipped due to missingness).
 ------------------------------------------
 Proband analysis
 pTDT mean: X SD
-pTDT SE: Y
+pTDT SE: Y SD
 pTDT pvalue: Z
 ------------------------------------------
 
@@ -105,8 +105,8 @@ pTDT pvalue: Z
 ```
 Brief description of basic output
 * `QC pass/fail` QC pass if correlation between average parent PRS and offspring PRS > 0.2 (flags data scramble)
-* `pTDT mean` Average of the pTDT deviation distribution
-* `pTDT SE` Standard error of the pTDT deviation distribution
+* `pTDT mean` Average of the pTDT deviation distribution (units: standard deviations of the average parent PRS distribution)
+* `pTDT SE` Standard error of the pTDT deviation distribution (units: standard deviations of the average parent PRS distribution)
 * `pTDT pvalue` pvalue of one-sample t-test of the pTDT deviation distribution against null of pTDT mean = 0
 * `missingness` If any family members in the `Struructure file` are not found in the `PRS file`
 
@@ -119,16 +119,16 @@ python ptdt.py --help
 ```
 
 `--subset [subset file]` 
-* Contents: Allows `pTDT` to be performed on a subset of the families in the `Structure file`. Note that families in the subset file are those retained for analysis.
-* Format: `subset file` is a text file containing one column of Family IDs (no header). 
+* Contents: Allows `pTDT` to be performed on a subset of the families in the `Structure file`. Families in the subset file are those retained for analysis.
+* Format: `subset file` is a text file containing one column of Family IDs (with or without header). 
 
 `--quad`
-* Contents: If Sibling column present in `Structure file`, invoking `--quad` performs pTDT `pTDT` analysis on these siblings as well
+* Contents: If Sibling column present in `Structure file`, invoking `--quad` performs `pTDT` analysis on these siblings as well.
 * Format: No file required, flag sufficient
 
 `--print`
 * Contents: Outputs a table to working directory that contains intermediate values in the `pTDT` calculation. The table resembles a `Structure file` where the individual IDs have been replaced by their corresponding PRS from the `PRS file` and the pTDT values calculated in the far right columns
-* Format: Text file with 6 columns: 1) Family ID 2) proband PRS 3) father PRS 4) mother PRS 5) average parent PRS 6) proband pTDT value. If `--quad` invoked, additional sibling PRS and sibling PRS columns added.  
+* Format: Text file with 6 columns: 1) Family ID 2) proband PRS 3) father PRS 4) mother PRS 5) average parent PRS 6) proband pTDT value. If `--quad` invoked, additional sibling PRS and sibling pTDT columns added.  
 
 `--prs X Y` 
 * Contents: The default `PRS file` format is set to match the output from [PRS scoring in Plink] (http://pngu.mgh.harvard.edu/~purcell/plink/profile.shtml), with the Individual ID in the 2nd column and the PRS in the 4th column. This modification to the `--prs` flag allows `pTDT` to accept files with different column ordering
@@ -136,7 +136,7 @@ python ptdt.py --help
 
 ## 4) Tutorial
 
-The three files should be found in the /demo folder of the cloned repository. You can also individually download the three files for the tutorial [here] (https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/ypaialex/ptdt/tree/master/pTDT_demo). Those files are:
+The three files should be found in the /pTDT_demo folder of the cloned repository. You can also individually download the three files for the tutorial [here] (https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/ypaialex/ptdt/tree/master/pTDT_demo). Those files are:
 
 1) `PRS file` called *demo_prs_file* which contains individual-PRS mapping for 7,780 individuals (1,945 families X 4 members per family)
 
@@ -206,6 +206,7 @@ Options invoked:
 	--PRS demo_prs_file
 	--structure demo_structure_file
 	--quad
+	--out demo_prs_quad 
 
 1945 families loaded from structure file.
 Creating pTDT matrix... done.
@@ -216,12 +217,12 @@ QC pass.
 ------------------------------------------
 Proband analysis
 pTDT mean: 3.841E-02 SD
-pTDT SE: 1.690E-02
+pTDT SE: 1.690E-02 SD
 pTDT pvalue: 2.310E-02
 
 Sibling analysis
 pTDT mean: 8.762E-03 SD
-pTDT SE: 1.674E-02
+pTDT SE: 1.674E-02 SD
 pTDT pvalue: 6.007E-01
 ------------------------------------------
 
@@ -247,6 +248,7 @@ Options invoked:
 	--PRS demo_prs_file
 	--structure demo_structure_file
 	--subset demo_subset_file
+	--out demo_prs_subset
 
 1945 families loaded from structure file.
 1410 families loaded from subset file (535 families excluded from analysis).
@@ -257,7 +259,7 @@ QC pass.
 ------------------------------------------
 Proband analysis
 pTDT mean: 3.122E-02 SD
-pTDT SE: 2.034E-02
+pTDT SE: 2.034E-02 SD
 pTDT pvalue: 1.251E-01
 ------------------------------------------
 
