@@ -180,15 +180,15 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
 
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,description='''
-pTDT Script v1.0.0 (20 Jan 2017)
+pTDT Script v1.0.0 (25 Jan 2017)
 (c) 2017 Alex Pai and Daniel Weiner
-Runs pTDT analysis for a specified family structure''')
-parser.add_argument('--prs', nargs ='+', help='PRS score file [FID] [IID] [PHENO] [PRS], X = [IID] column number, Y = [PRS] column number, default X Y = 2 4',
-                    metavar='FILENAME X Y',action=required_length(1,3))
-parser.add_argument('--structure', help='Family structure file [FID] [Proband_IID] [Father_IID] [Mother_IID] ([Sibling_IID])',
-                    metavar='FILENAME',type=argparse.FileType('r'),required=True)
+Runs pTDT analysis for a specified family structure
+See <https://github.com/ypaialex/ptdt> for more details''')
+parser.add_argument('--prs', nargs ='+', help='PRS score file [Family ID] [Individual ID] [PHENO] [PRS], X = [IID] column number, Y = [PRS] column number, default X Y = 2 4',
+                    metavar='FILENAME X Y')
+parser.add_argument('--structure', help='Family structure file (in this order): [Family ID] [Proband_IID] [Father_IID] [Mother_IID] ([Sibling_IID])', metavar='FILENAME',type=argparse.FileType('r'),required=True)
 parser.add_argument('--subset',metavar='FILENAME',type=argparse.FileType('r'), 
-                    help='Add subset of families to analyze, default file excludes header',default=0)
+                    help='Add subset of families to analyze, header optional',default=0)
 parser.add_argument('--quad',help='Use if Family structure file includes unaffected siblings', 
                     action='store_const', const='True',default='False')
 parser.add_argument('--print',dest='table',help='Prints table of pTDT values',action='store_const', const='True',default='False')
@@ -198,7 +198,7 @@ args = parser.parse_args()
 if __name__ == "__main__":
     PRS, PRS_iid, PRS_prs, structure, subset, quad, table, outname = parse(args)
 
-    print('pTDT Script v1.0.0 (20 Jan 2017)')
+    print('pTDT Script v1.0.0 (25 Jan 2017)')
     print('(c) 2017 Alex Pai and Daniel Weiner')
     print('')
     print('Writing log file to '+outname+'.ptdt.log')
@@ -211,11 +211,12 @@ if __name__ == "__main__":
         print('\t--quad')
     if table == 'True':
         print('\t--print')
+    print('\t--out '+outname+'\n')
     print('')
 
     #log file
     log = open(outname+'.ptdt.log', 'w')
-    log.write('pTDT Script v1.0.0 (20 Jan 2017)\n')
+    log.write('pTDT Script v1.0.0 (25 Jan 2017)\n')
     log.write('Options invoked:\n')
     log.write('\t--PRS {0}\n' .format(PRS.name))
     log.write('\t--structure {0}\n' .format(structure.name))
@@ -225,6 +226,7 @@ if __name__ == "__main__":
         log.write('\t--quad\n')
     if table == 'True':
         log.write('\t--print\n')
+    log.write('\t--out '+outname+'\n')
     log.write('\n')
     log.write('Hostname: {0}\n' .format(socket.gethostname()))
     name = os.getcwd()
@@ -250,36 +252,36 @@ if __name__ == "__main__":
     print('------------------------------------------')
     print('Proband analysis')
     print('pTDT mean: %.3E SD' % values[0])
-    print('pTDT SE: %.3E' % values[1])
+    print('pTDT SE: %.3E SD' % values[1])
     print('pTDT pvalue: %.3E' % values[2])
     if quad == 'True':
         print('')
         print('Sibling analysis')
         print('pTDT mean: %.3E SD' % values[3])
-        print('pTDT SE: %.3E' % values[4])
+        print('pTDT SE: %.3E SD' % values[4])
         print('pTDT pvalue: %.3E' % values[5])
     print('------------------------------------------')
     print('')
 
     if miscount >= 1:
-        print('--subset: Missing families in structure file printed to ' + outname+'.missing .')
-        log.write('--subset: Missing families in structure file printed to ' + outname+'.missing .\n')
+        print('--subset: Missing families in structure file printed to ' + outname+'.missing')
+        log.write('--subset: Missing families in structure file printed to ' + outname+'.missing\n')
     if table == 'True':
-        log.write('--print: Table written to ' +outname+'.ptdt.table .\n')
-        print('--print: Table written to ' +outname+'.ptdt.table .')
+        log.write('--print: Table written to ' +outname+'.ptdt.table\n')
+        print('--print: Table written to ' +outname+'.ptdt.table')
     results = open(outname+'.ptdt.result', 'w')
     results.write('Proband analysis\n')
     results.write('pTDT mean: %.3E SD\n' % values[0])
-    results.write('pTDT SE: %.3E\n' % values[1])
+    results.write('pTDT SE: %.3E SD\n' % values[1])
     results.write('pTDT pvalue: %.3E\n' % values[2])
     if quad == 'True':
         results.write('\n')
         results.write('Sibiling analysis\n')
         results.write('pTDT mean: %.3E SD\n' % values[3])
-        results.write('pTDT SE: %.3E\n' % values[4])
+        results.write('pTDT SE: %.3E SD\n' % values[4])
         results.write('pTDT pvalue: %.3E\n' % values[5])
-    print('--output: Results written to '+outname+'.ptdt.result .')
-    log.write('--output: Results written to '+outname+'.ptdt.result .\n\n')
+    print('--output: Results written to '+outname+'.ptdt.result')
+    log.write('--output: Results written to '+outname+'.ptdt.result\n\n')
     log.write('End time: {0}' .format(time.strftime("%c")))
     log.flush()
     results.flush()
