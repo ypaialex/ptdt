@@ -70,11 +70,13 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
     '''
 
     PRS_values = {}
-    first_line = PRS.readline() #skip header row
     for line in PRS:
-        PRS_values[line.split()[int(PRS_iid)]] = float(line.split()[int(PRS_prs)]) 
-        #creating dict for each ID to call its PRS
-
+        try:
+            PRS_values[line.split()[int(PRS_iid)]] = float(line.split()[int(PRS_prs)]) 
+            #creating dict for each ID to call its PRS
+        except ValueError:
+            continue
+            
     print('Creating pTDT matrix.', end="") #progress
     data = [] #initialize list to store each row of matched matrix
 
