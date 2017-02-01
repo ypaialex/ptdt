@@ -283,4 +283,4 @@ This project is licensed under GNU GPL v3.
 
 ## Authors
 
-Alex Pai and Daniel Weiner (Stanley Center for Psychiatric Research at Broad Institute)
+Alex Pai and Daniel Weiner (Robinson Lab, Analytic and Translational Genetics Unit at Massachusetts General Hospital and Stanley Center for Psychiatric Research at Broad Institute)
