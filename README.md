@@ -39,15 +39,17 @@ pip install .
 
 `pTDT` requires two input files:
 
-  1. Polygenic Risk Score file (from here: `PRS file`)
+  1. __Polygenic Risk Score file__ (from here: `PRS file`)
     * Contents: Mapping between individuals and their polygenic risk scores
     * Format: Text file with four columns: 1) Family ID 2) Individual ID 3) Case/control status (typically 2 if case, 1 if not) 4) polygenic risk score. 
-    * Number of rows in `PRS file` = number of individuals in cohort
-  2. Family Structure file (from here: `Structure file`)
+    	* Header: Optional
+    	* Number of rows in `PRS file` = number of individuals in cohort
+  2. __Family Structure file__ (from here: `Structure file`)
     * Contents: File identifying which individual belongs in which family
     * Format: Text file with four or five columns: 1) Family ID 2) Proband Individual ID 3) Father Individual ID 4) Mother Individual ID   5) Sibling Individual ID (*optional*)
-    * Number of rows in `Structure file` = number of families in cohort ~ (length of `PRS file` / n) (n = 3 for trio families, n = 4 for quads)
-
+    	* Header: __Mandatory__
+    	* Number of rows in `Structure file` = number of families in cohort ~ (length of `PRS file` / n) (n = 3 for trio families, n = 4 for quads)
+    
 Individuals missing from the `Structure file` should be marked as "NA"
 
 **Important note about unique IDs**
@@ -71,9 +73,9 @@ python ptdt.py
 If successfully run, the following output will print:
 
 ```
-usage: ptdt.py [-h] [--prs FILENAME X Y [FILENAME X Y ...]] --structure
-               FILENAME [--subset FILENAME] [--quad] [--print] --out OUT
-ptdt.py: error: the following arguments are required: --structure, --out
+usage: ptdt.py [-h] --prs FILENAME [...] --structure FILENAME
+               [--subset FILENAME] [--quad] [--print] --out OUT
+ptdt.py: error: the following arguments are required: --prs, --structure, --out
 ```
 
 A basic `pTDT` analysis must include 1) `PRS file` 2) `Structure file` 3) out name, as follows:
@@ -281,4 +283,4 @@ This project is licensed under GNU GPL v3.
 
 ## Authors
 
-Alex Pai and Daniel Weiner (Stanley Center for Psychiatric Research at Broad Institute)
+Alex Pai and Daniel Weiner (Robinson Lab, Analytic and Translational Genetics Unit at Massachusetts General Hospital and Stanley Center for Psychiatric Research at Broad Institute)
