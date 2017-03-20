@@ -2,14 +2,14 @@
 
 `pTDT` is a python-based command line tool for analyzing the transmission of polygenic risk within families.
 
-For a detailed description of the `pTDT`, please consult [Weiner et al. 2017] (http://biorxiv.org/content/early/2016/11/23/089342). If you publish using `pTDT`, please cite that paper.
+For a detailed description of the `pTDT`, please consult [Weiner et al. 2017](http://biorxiv.org/content/early/2016/11/23/089342). If you publish using `pTDT`, please cite that paper.
 
 This `pTDT` wiki describes: 
 
-* [1. The file formats accepted by `pTDT`] (https://github.com/ypaialex/ptdt#1-basic-file-formats) 
-* [2. The basic usage of `pTDT`] (https://github.com/ypaialex/ptdt#2-basic-usage) 
-* [3. Additional analytic flags available through `pTDT`] (https://github.com/ypaialex/ptdt#3-additional-flags)  
-* [4. A brief `pTDT` tutorial] (https://github.com/ypaialex/ptdt#4-tutorial)
+* [1. The file formats accepted by `pTDT`](https://github.com/ypaialex/ptdt#1-basic-file-formats) 
+* [2. The basic usage of `pTDT`](https://github.com/ypaialex/ptdt#2-basic-usage) 
+* [3. Additional analytic flags available through `pTDT`](https://github.com/ypaialex/ptdt#3-additional-flags)  
+* [4. A brief `pTDT` tutorial](https://github.com/ypaialex/ptdt#4-tutorial)
 
 ## System requirements and `pTDT` download
 
@@ -21,7 +21,7 @@ The following are required to run `pTDT`:
 5. `pandas (version >= 0.17.0)`
 6. `scipy`
 
-We recommend you download Python and the required packages under the [Anaconda] (https://www.continuum.io/downloads) distribution. 
+We recommend you download Python and the required packages under the [Anaconda](https://www.continuum.io/downloads) distribution. 
 
 `pTDT` may be downloaded using the command-line.
 
@@ -29,7 +29,7 @@ We recommend you download Python and the required packages under the [Anaconda] 
 git clone https://github.com/ypaialex/ptdt
 ```
 
-Alternatively, you can [download the source code (ZIP)] (https://github.com/ypaialex/ptdt/zipball/master). Install `pTDT` by entering the source folder and typing
+Alternatively, you can [download the source code (ZIP)](https://github.com/ypaialex/ptdt/zipball/master). Install `pTDT` by entering the source folder and typing
 
 ```
 pip install .
@@ -131,7 +131,7 @@ python ptdt.py --help
 * Format: Text file with 6 columns: 1) Family ID 2) proband PRS 3) father PRS 4) mother PRS 5) average parent PRS 6) proband pTDT value. If `--quad` invoked, additional sibling PRS and sibling pTDT columns added.  
 
 `--prs X Y` 
-* Contents: The default `PRS file` format is set to match the output from [PRS scoring in Plink] (http://pngu.mgh.harvard.edu/~purcell/plink/profile.shtml), with the Individual ID in the 2nd column and the PRS in the 4th column. This modification to the `--prs` flag allows `pTDT` to accept files with different column ordering
+* Contents: The default `PRS file` format is set to match the output from [PRS scoring in Plink](http://pngu.mgh.harvard.edu/~purcell/plink/profile.shtml), with the Individual ID in the 2nd column and the PRS in the 4th column. This modification to the `--prs` flag allows `pTDT` to accept files with different column ordering
 * Format: `--prs X Y` where X is the integer number of the column containing the Individual ID and Y is the integer number of the column containing the PRS value. Default is X = 2 and Y = 4.
 
 ## 4) Tutorial
