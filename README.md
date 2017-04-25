@@ -41,7 +41,7 @@ pip install .
 
   1. __Polygenic Risk Score file__ (from here: `PRS file`)
     * Contents: Mapping between individuals and their polygenic risk scores
-    * Format: Text file with four columns: 1) Family ID 2) Individual ID 3) Case/control status (typically 2 if case, 1 if not) 4) polygenic risk score. 
+    * Format: Text file with four columns: 1) Family ID 2) Individual ID 3) Case/control status (typically 2 if case, 1 if not) 4) polygenic risk score (calculated from Plink, or similar program). 
     	* Header: Optional
     	* Number of rows in `PRS file` = number of individuals in cohort
   2. __Family Structure file__ (from here: `Structure file`)
@@ -133,7 +133,7 @@ python ptdt.py --help
 * Format: Text file with 6 columns: 1) Family ID 2) proband PRS 3) father PRS 4) mother PRS 5) average parent PRS 6) proband pTDT value. If `--quad` invoked, additional sibling PRS and sibling pTDT columns added.  
 
 `--prs X Y` 
-* Contents: The default `PRS file` format is set to match the output from [PRS scoring in Plink](http://pngu.mgh.harvard.edu/~purcell/plink/profile.shtml), with the Individual ID in the 2nd column and the PRS in the 4th column. This modification to the `--prs` flag allows `pTDT` to accept files with different column ordering
+* Contents: The default `PRS file` format is set to Individual ID in the 2nd column and the PRS in the 4th column. This modification to the `--prs` flag allows `pTDT` to accept files with different column ordering
 * Format: `--prs X Y` where X is the integer number of the column containing the Individual ID and Y is the integer number of the column containing the PRS value. Default is X = 2 and Y = 4.
 
 ## 4) Tutorial
