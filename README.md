@@ -2,7 +2,7 @@
 
 `pTDT` is a python-based command line tool for analyzing the transmission of polygenic risk within families.
 
-For a detailed description of the `pTDT`, please consult [Weiner et al. 2017](http://biorxiv.org/content/early/2016/11/23/089342). If you publish using `pTDT`, please cite that paper.
+For a detailed description of the `pTDT`, please consult [Weiner et al. 2017](https://www.nature.com/ng/journal/vaop/ncurrent/full/ng.3863.html). If you publish using `pTDT`, please cite that paper.
 
 This `pTDT` wiki describes: 
 
