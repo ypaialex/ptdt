@@ -110,13 +110,13 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
     # create output matrix
     output = pd.DataFrame(index = range(0, matrix.shape[0]), columns = ["FID","mp_PRS","pro_PRS","pro_pTDT"])
 
-    output['FID'] = matrix[[0]]
+    output['FID'] = matrix['ID']
     output['mp_PRS'] = (matrix.iloc[:,2]+ matrix.iloc[:,3])/2
-    output['pro_PRS'] = matrix[[1]]
+    output['pro_PRS'] = matrix['Proband']
     sd = np.std(output['mp_PRS'], ddof=1)
     output['pro_pTDT'] = (output.iloc[:,2] - output.iloc[:,1])/sd
     if quad == 'True':
-        output['sib_PRS'] = matrix[[4]]
+        output['sib_PRS'] = matrix['Sibling']
         output['sib_pTDT'] = (output.iloc[:,4] - output.iloc[:,1])/sd
     print(' done.')
 
@@ -165,8 +165,8 @@ def ptdt_analysis(PRS, PRS_iid, PRS_prs, structured):
         values = values + values2
     
     if table == 'True':
-        output['dad_PRS'] = matrix[[2]]
-        output['mom_PRS'] = matrix[[3]]
+        output['dad_PRS'] = matrix['Father']
+        output['mom_PRS'] = matrix['Mother']
         if quad == 'True':
             cols = ['FID','pro_PRS','sib_PRS','dad_PRS','mom_PRS','mp_PRS','pro_pTDT','sib_pTDT']
         else:
